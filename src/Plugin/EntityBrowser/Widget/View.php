@@ -56,6 +56,12 @@ class View extends WidgetBase {
       }
     }
 
+    // Set exposed filter input.
+    $input = $form_state->getUserInput();
+    if (!empty($input)) {
+      $storage['widget_view']->setExposedInput($input);
+    }
+
     $form['view'] = $storage['widget_view']->executeDisplay($this->configuration['view_display']);
     if (empty($storage['widget_view']->field['entity_browser_select'])) {
       return [
